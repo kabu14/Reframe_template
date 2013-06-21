@@ -1,6 +1,6 @@
 <?php
 /**
- * The Header for our theme.
+ * The Default Header for our theme.
  *
  * Displays all of the <head> section and everything up till <div id="main">
  *
@@ -71,10 +71,8 @@
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">
 			<hgroup>
-				<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-				<!--Display the logo if the option exists-->
-				<?php $reframe_options = get_option('inspiration_options'); ?>
+				<?php //Initialize options ?>
+				<?php $reframe_options = get_option('reframe_home'); ?>
 				<?php $default_options = get_option('reframe_options'); ?>
 				<?php $reframe_logo = $reframe_options['logo']; ?>
 				<?php //Assign the header image based on if it's front page and if the home image is assigned
@@ -89,12 +87,22 @@
 				<?php if ( $reframe_logo != '' ): ?>
 					<a href="/"><img class="logo" src="<?php echo $reframe_logo; ?>" /></a>
 				<?php else:?>
-					<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-					<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+					<h1 id="site-title"><span><a style="color: <?php echo $reframe_options['color']; ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 				<?php endif; ?>
+
+				<?php /*
+				if ( is_front_page() and $reframe_options['search'] ) {
+					$home_search = $reframe_options['search'];
+				}
+					
+				if ( !is_front_page() and $default_options['search'] ) {
+					$default_search = $default_options['search'];
+				} 
+					*/
+				?>
 			</hgroup>
 
-			<!--Display the header image based on if the option is checked to be above the menu-->
+			<?php //Display the header image based on if the option is checked to be above the menu ?>
 			<?php $reframe_menu_position = $reframe_options['radio_menu']; ?>
 			<?php if ( $reframe_menu_position == 1 and $reframe_header_image != '' ) : ?>
 				<img class="header-img" src="<?php echo $reframe_header_image; ?>" />
@@ -113,11 +121,17 @@
 				<img class="header-img" src="<?php echo $reframe_header_image; ?>" />
 			<?php endif; ?>
 
-			<!--Show the search bar only if the user selected the checkbox in the inspiration options page-->
+			<!--Show the search bar only if the user selected the checkbox in the  options page-->
 			<?php
-				if ( $home_options['search'] == 1 ) {
+			if ( is_front_page() ) {
+				if ( $reframe_options['search'] ) {
 					get_search_form(); 
 				}
+			}
+			elseif ( !is_front_page() and $default_options['search'] ) {
+				get_search_form();
+			}
+				
 			?>
 			
 	</header><!-- #branding -->

@@ -20,17 +20,17 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	color: #333333;	
 }
 
+#site-title {
+	margin-bottom: 20px;
+}
+
 
 /*Branding*/
 
-#branding hgroup h1, #branding hgroup h2 {
+#branding hgroup h2 {
 	display: none;
 }
 
-#branding hgroup a {
-	max-width: 320px;	
-	display: block;
-}
 
 #branding a img {
 	display: inline;
@@ -48,7 +48,7 @@ a {
 }
 
 #branding #searchform {
-	top: 1.5em;
+	top: 3em;
 }
 
 #main {

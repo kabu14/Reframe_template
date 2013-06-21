@@ -142,7 +142,7 @@ function inspiration_preview_callback () {
 	<?php if ( $options['logo'] != '') : ?>
 			<img style='padding: 20px; max-width: 300px; max-height: 100px; display: block;' src='<?php echo esc_url($options["logo"]); ?>' class='preview-upload'/>
 	<?php else:?>
-			<p style="color: <?php echo $options['color']; ?>; padding-left: 20px;">Inspiration Centre</p>
+			<p style="color: <?php echo $options['color']; ?>; padding-left: 20px;"><?php bloginfo( 'name' ) ?></p>
 	<?php endif; ?>		
 	<!--Show the menu bar depending on if the user selected above or below the header image. 1 is menu below the banner.-->
 	<?php if ($options['radio_menu'] == 1) : ?>

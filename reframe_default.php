@@ -57,7 +57,7 @@ function reframe_add_options() {
 	//register_setting( $option_group(has to match settings_fields() above), $option_name(name of option to sanitize), $sanitize_callback );
     register_setting( 'reframe_options', 'reframe_options', 'reframe_options_validate' );
 	//add_settings_section( $id, $title, $callback, $page );
-    add_settings_section( 'reframe_section', 'Home Page', 'reframe_section_callback', 'reframe' );
+    add_settings_section( 'reframe_section', 'Default', 'reframe_section_callback', 'reframe' );
 	//add_settings_field( $id, $title, $callback, $page (should match the section $page), $section, $args );
 	add_settings_field( 'reframe_preview', 'Preview', 'reframe_preview_callback', 'reframe', 'reframe_section' ); 
 	add_settings_field( 'reframe_menu', 'Menu', 'reframe_menu_callback', 'reframe', 'reframe_section' ); 
@@ -149,7 +149,7 @@ function reframe_preview_callback () {
 	<?php if ( $options['logo'] != '') : ?>
 			<img style='padding: 20px; max-width: 300px; max-height: 100px; display: block;' src='<?php echo esc_url($options["logo"]); ?>' class='preview-upload'/>
 	<?php else:?>
-			<p style="color: <?php echo $options['color']; ?>; padding-left: 20px;">Default title</p>
+			<p style="color: <?php echo $options['color']; ?>; padding-left: 20px;"><?php bloginfo( 'name' ) ?></p>
 	<?php endif; ?>		
 	<!--Show the menu bar depending on if the user selected above or below the header image. 1 is menu below the banner.-->
 	<?php if ($options['radio_menu'] == 1) : ?>
