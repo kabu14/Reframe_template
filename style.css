@@ -1,0 +1,68 @@
+/*  
+Theme Name: Reframe Template
+Theme URI: http://www.reframemarketing.com/
+Version: 1.0
+Description: Designed by <a href="http://www.reframemarketing.com/">Reframe Marketing</a>.
+Author: Reframe Marketing
+Author URI: http://www.reframemarketing.com
+Template: twentyeleven
+Copyright: (c) 2010-2012 Reframe Marketing.
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+*/
+
+@import url("../twentyeleven/style.css");
+/*Title*/
+.title {
+	display: inline-block;
+	margin: 20px;
+	color: #333333;	
+}
+
+
+/*Branding*/
+
+#branding hgroup h1, #branding hgroup h2 {
+	display: none;
+}
+
+#branding hgroup a {
+	max-width: 320px;	
+	display: block;
+}
+
+#branding a img {
+	display: inline;
+}
+
+#branding .logo {
+	margin: 35px 0 15px 0;
+	display: inline;
+}
+
+a {
+    clear: both;
+    color: #1982D1;
+    text-decoration: none;
+}
+
+#branding #searchform {
+	top: 1.5em;
+}
+
+#main {
+	padding: 0;	
+}
+
+#access {
+	margin: 0 auto;
+}
+
+/*Branding end*/
+
+.singular.page .hentry {	
+	padding: 0;
+}
+
+
