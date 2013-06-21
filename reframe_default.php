@@ -237,7 +237,7 @@ function reframe_print_scripts() {
     wp_enqueue_style( 'thickbox' ); // Stylesheet used by Thickbox
     wp_enqueue_script( 'thickbox' );
     wp_enqueue_media(); // Add this to invoke the 3.5 Media Uploader in our custom page.
-    wp_enqueue_script( 'reframe-upload', get_stylesheet_directory_uri() . '/inspiration-upload.js', array( 'thickbox', 'media-upload' ) );
+    wp_enqueue_script( 'reframe-upload', get_stylesheet_directory_uri() . '/reframe-upload.js', array( 'thickbox', 'media-upload' ) );
 }
 
 

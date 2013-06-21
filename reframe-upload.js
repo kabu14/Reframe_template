@@ -1,6 +1,6 @@
 (function($) {
    $(function() {
-      $.fn.wptuts = function(options) {
+      $.fn.reframe = function(options) {
          var selector = $(this).selector; // Get the selector
          // Set default options
          var defaults = {
@@ -51,6 +51,6 @@
       }
  
       // Usage
-      $('.upload').wptuts(); // Use as default option.
+      $('.upload').reframe(); // Use as default option.
    });
 }(jQuery));
