@@ -1,5 +1,5 @@
 <?php
-require('wptuts.php');
+require('reframe_home.php');
 require('reframe_default.php');
 
 //Initialize the update checker.
