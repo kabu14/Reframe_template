@@ -22,12 +22,12 @@ function reframe_home_options() {
     }     
 }
 
-add_action( 'admin_menu', 'inspiration_add_page' );
-function inspiration_add_page() {
-    $inspiration_options_page = add_theme_page( 'Reframe Home', 'Reframe Home', 'manage_options', 'inspiration', 'inspiration_options_page' );
-    add_action( 'admin_print_scripts-' . $inspiration_options_page, 'inspiration_print_scripts' );
+add_action( 'admin_menu', 'reframe_home_add_page' );
+function reframe_home_add_page() {
+    $reframe_home_options_page = add_theme_page( 'Reframe Home', 'Reframe Home', 'manage_options', 'reframe_home', 'reframe_home_options_page' );
+    add_action( 'admin_print_scripts-' . $reframe_home_options_page, 'reframe_home_print_scripts' );
 } 
-function inspiration_options_page() {
+function reframe_home_options_page() {
 ?>
     <div class='wrap'>
         <div id='icon-tools' class='icon32'></br></div>
@@ -37,32 +37,32 @@ function inspiration_options_page() {
         <?php endif; ?>
         <form action='options.php' method='post'>
             <?php settings_fields( 'reframe_home' ); ?>
-            <?php do_settings_sections( 'inspiration' ); ?>
+            <?php do_settings_sections( 'reframe_home' ); ?>
             <p class="submit">
-					<input name="reframe_home[submit]" id="submit_options_form" type="submit" class="button-primary" value="<?php esc_attr_e('Save Settings', 'inspiration'); ?>" />
-					<input name="reframe_home[reset]" type="submit" class="button-secondary" value="<?php esc_attr_e('Reset Defaults', 'inspiration'); ?>" />		
+					<input name="reframe_home[submit]" id="submit_options_form" type="submit" class="button-primary" value="<?php esc_attr_e('Save Settings', 'reframe_home'); ?>" />
+					<input name="reframe_home[reset]" type="submit" class="button-secondary" value="<?php esc_attr_e('Reset Defaults', 'reframe_home'); ?>" />		
 				</p>
         </form>
     </div>
 <?php 
 }
 
-add_action( 'admin_init', 'inspiration_add_options' );
+add_action( 'admin_init', 'reframe_home_add_options' );
 
-function inspiration_add_options() {
-    register_setting( 'reframe_home', 'reframe_home', 'inspiration_options_validate' );
-    add_settings_section( 'inspiration_section', 'Home Page', 'inspiration_section_callback', 'inspiration' );
-	add_settings_field( 'inspiration_preview', 'Preview', 'inspiration_preview_callback', 'inspiration', 'inspiration_section' ); 
-	add_settings_field( 'inspiration_menu', 'Menu', 'inspiration_menu_callback', 'inspiration', 'inspiration_section' ); 
-	add_settings_field( 'inspiration_search', 'Search', 'inspiration_search_callback', 'inspiration', 'inspiration_section' );    
-    add_settings_field( 'inspiration_color', 'Header Text', 'inspiration_color_callback', 'inspiration', 'inspiration_section' );
-    add_settings_field( 'inspiration_logo', 'Logo Image', 'inspiration_logo_callback', 'inspiration', 'inspiration_section' );
-	add_settings_field( 'inspiration_home', 'Home Page Header', 'inspiration_home_callback', 'inspiration', 'inspiration_section' );
+function reframe_home_add_options() {
+    register_setting( 'reframe_home', 'reframe_home', 'reframe_home_options_validate' );
+    add_settings_section( 'reframe_home_section', 'Home Page', 'reframe_home_section_callback', 'reframe_home' );
+	add_settings_field( 'reframe_home_preview', 'Preview', 'reframe_home_preview_callback', 'reframe_home', 'reframe_home_section' ); 
+	add_settings_field( 'reframe_home_menu', 'Menu', 'reframe_home_menu_callback', 'reframe_home', 'reframe_home_section' ); 
+	add_settings_field( 'reframe_home_search', 'Search', 'reframe_home_search_callback', 'reframe_home', 'reframe_home_section' );    
+    add_settings_field( 'reframe_home_color', 'Header Text', 'reframe_home_color_callback', 'reframe_home', 'reframe_home_section' );
+    add_settings_field( 'reframe_home_logo', 'Logo Image', 'reframe_home_logo_callback', 'reframe_home', 'reframe_home_section' );
+	add_settings_field( 'reframe_home_home', 'Home Page Header', 'reframe_home_home_callback', 'reframe_home', 'reframe_home_section' );
 }
 
 
 //Only uncomment the delete_image parts if you want to be able to delete images from the database as well.
-function inspiration_options_validate($values) {
+function reframe_home_options_validate($values) {
 
 	$default_options = reframe_home_options();
 	$valid_input = $default_options;
@@ -133,9 +133,9 @@ function delete_image( $image_url ) {
 	}	
 }
 
-function inspiration_section_callback() { /* Print nothing */ };
+function reframe_home_section_callback() { /* Print nothing */ };
 
-function inspiration_preview_callback () {
+function reframe_home_preview_callback () {
 	$options = get_option( 'reframe_home' );
 	$home_options = get_option( 'reframe_options' ); 
 	?>
@@ -170,7 +170,7 @@ function inspiration_preview_callback () {
 }
 
 
-function inspiration_menu_callback () {
+function reframe_home_menu_callback () {
 	$options = get_option( 'reframe_home' );
 	$html = '<input type="radio" id="menu_below" name="reframe_home[radio_menu]" value="1"' . checked( 1, $options['radio_menu'], false ) . '/>';
 	$html .= '<label style="padding: 0 10px 0;" for="menu_below">Below Header Image</label>';
@@ -181,15 +181,15 @@ function inspiration_menu_callback () {
 	echo $html;	
 }
 
-function inspiration_search_callback () {
+function reframe_home_search_callback () {
 	$options = get_option( 'reframe_home' );
-	$html = '<input type="checkbox" id="inspiration-search" name="reframe_home[search]" value="1"' . checked( 1, $options['search'], false ) . '/>';
-	$html .= '<label style="padding: 0 10px 0;" for="inspiration-search">Show search bar.</label>';
+	$html = '<input type="checkbox" id="reframe_home-search" name="reframe_home[search]" value="1"' . checked( 1, $options['search'], false ) . '/>';
+	$html .= '<label style="padding: 0 10px 0;" for="reframe_home-search">Show search bar.</label>';
 	
 	echo $html;	
 }
 
-function inspiration_color_callback() {
+function reframe_home_color_callback() {
     $options = get_option( 'reframe_home' ); 
 ?>
         <p>Choose a color:</p>
@@ -198,33 +198,33 @@ function inspiration_color_callback() {
 <?php
 }
 
-function inspiration_logo_callback() {
+function reframe_home_logo_callback() {
     $options = get_option( 'reframe_home' ); 
 ?>
     <span class='upload'>
     	<img style='max-width: 300px; max-height: 100px; display: block;' src='<?php echo esc_url($options["logo"]); ?>' class='preview-upload'/>
-        <input style="display:none;" type='text' id='inspiration_logo' class='regular-text text-upload' name='reframe_home[logo]' value='<?php echo esc_url($options["logo"]); ?>'/>
+        <input style="display:none;" type='text' id='reframe_home_logo' class='regular-text text-upload' name='reframe_home[logo]' value='<?php echo esc_url($options["logo"]); ?>'/>
         <p>Choose an image from your media library or upload one:</p>
         <input type='button' class='button button-upload' value='Choose Image'/>
         <?php if ( '' != $options['logo'] ): ?>
-			<input id="delete_logo_button" name="reframe_home[delete_logo]" type="submit" class="button" value="<?php _e( 'Remove Image', 'inspiration' ); ?>" />
+			<input id="delete_logo_button" name="reframe_home[delete_logo]" type="submit" class="button" value="<?php _e( 'Remove Image', 'reframe_home' ); ?>" />
 		<?php endif; ?>
         
     </span>
 <?php
 }
 
-function inspiration_home_callback() {
+function reframe_home_home_callback() {
     $options = get_option( 'reframe_home' ); 
 ?>
 
     <span class='upload'>
     	<img style='max-width: 1000px; display: block;' src='<?php echo esc_url($options["home"]); ?>' class='preview-upload'/>
-        <input style="display:none;" type='text' id='inspiration_home' class='regular-text text-upload' name='reframe_home[home]' value='<?php echo esc_url($options["home"]); ?>'/>
+        <input style="display:none;" type='text' id='reframe_home_home' class='regular-text text-upload' name='reframe_home[home]' value='<?php echo esc_url($options["home"]); ?>'/>
         <p>Choose an image from your media library or upload one:</p>
         <input type='button' class='button button-upload' value='Choose Image'/>
         <?php if ( '' != $options['home'] ): ?>
-			<input id="delete_home_button" name="reframe_home[delete_home]" type="submit" class="button" value="<?php _e( 'Remove Image', 'inspiration' ); ?>" />
+			<input id="delete_home_button" name="reframe_home[delete_home]" type="submit" class="button" value="<?php _e( 'Remove Image', 'reframe_home' ); ?>" />
 		<?php endif; ?>
         
     </span>
@@ -232,11 +232,11 @@ function inspiration_home_callback() {
 <?php
 }
 
-function inspiration_print_scripts() {
+function reframe_home_print_scripts() {
     wp_enqueue_style( 'thickbox' ); // Stylesheet used by Thickbox
     wp_enqueue_script( 'thickbox' );
     wp_enqueue_media(); // Add this to invoke the 3.5 Media Uploader in our custom page.
-    wp_enqueue_script( 'inspiration-upload', get_stylesheet_directory_uri() . '/reframe-upload.js', array( 'thickbox', 'media-upload' ) );
+    wp_enqueue_script( 'reframe_home-upload', get_stylesheet_directory_uri() . '/reframe-upload.js', array( 'thickbox', 'media-upload' ) );
 }
 
 add_action( 'admin_enqueue_scripts', 'wp_enqueue_color_picker' );
@@ -245,12 +245,12 @@ function wp_enqueue_color_picker( ) {
     wp_enqueue_script( 'wp-color-picker-script', get_stylesheet_directory_uri() . '/js/script.js', array( 'wp-color-picker' ), false, true );
 }
 
-function inspiration_add_def_header() {
+function reframe_home_add_def_header() {
 	$reframe_home = get_option( 'reframe_home' );
-	$inspiration_def_header = $reframe_home['def_header'];
+	$reframe_home_def_header = $reframe_home['def_header'];
 ?>
-	<link rel="icon" type="image/png" href="<?php echo esc_url($inspiration_def_header); ?>">
+	<link rel="icon" type="image/png" href="<?php echo esc_url($reframe_home_def_header); ?>">
 <?php
 }
-add_action( 'wp_head', 'inspiration_add_def_header' );
+add_action( 'wp_head', 'reframe_home_add_def_header' );
 ?>
