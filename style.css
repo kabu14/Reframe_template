@@ -26,12 +26,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 /*Branding*/
-
-#branding hgroup h2 {
-	display: none;
-}
-
-
 #branding a img {
 	display: inline;
 }

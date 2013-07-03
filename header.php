@@ -71,7 +71,7 @@
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">
 			<hgroup>
-				<?php //Initialize options ?>
+				<?php //Initialize home and default options ?>
 				<?php $reframe_options = get_option('reframe_home'); ?>
 				<?php $default_options = get_option('reframe_options'); ?>
 				<?php $reframe_logo = $reframe_options['logo']; ?>
@@ -81,25 +81,27 @@
 				}
 				else {
 						$reframe_header_image = $default_options['def_header'];
-					} ?>
+				} 
+
+				// Assign the color of the logo text
+				if ( is_front_page()) {
+					$reframe_branding_color = $reframe_options['color'];
+				}
+				else {
+					$reframe_branding_color = $default_options['color'];
+				}
+				if ( $reframe_branding_color != '')  {
+					$reframe_branding_color = 'style="color:' . $reframe_branding_color . '"';
+				}
+				?>
 
 				<?php //Logo assignment ?>
 				<?php if ( $reframe_logo != '' ): ?>
 					<a href="/"><img class="logo" src="<?php echo $reframe_logo; ?>" /></a>
-				<?php else:?>
-					<h1 id="site-title"><span><a style="color: <?php echo $reframe_options['color']; ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
+				<?php else :?>
+					<h1 id="site-title"><span><a <?php echo $reframe_branding_color; ?> href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
+					<h2 id="site-description" <?php echo $reframe_branding_color; ?> ><?php bloginfo( 'description' ); ?></h2>
 				<?php endif; ?>
-
-				<?php /*
-				if ( is_front_page() and $reframe_options['search'] ) {
-					$home_search = $reframe_options['search'];
-				}
-					
-				if ( !is_front_page() and $default_options['search'] ) {
-					$default_search = $default_options['search'];
-				} 
-					*/
-				?>
 			</hgroup>
 
 			<?php //Display the header image based on if the option is checked to be above the menu ?>
@@ -121,7 +123,7 @@
 				<img class="header-img" src="<?php echo $reframe_header_image; ?>" />
 			<?php endif; ?>
 
-			<!--Show the search bar only if the user selected the checkbox in the  options page-->
+			<!--Show the search bar in either the home or other pages only if the user selected the checkbox in the options page-->
 			<?php
 			if ( is_front_page() ) {
 				if ( $reframe_options['search'] ) {
