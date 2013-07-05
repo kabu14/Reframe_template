@@ -1,6 +1,6 @@
 <?php
 /**
- * Template name: Test
+ * Template name: Testssssssss
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
@@ -12,13 +12,9 @@
  * @since Twenty Eleven 1.0
  */
 
-get_header(); ?>
-<?php
-if ( function_exists( 'ot_get_option' ) ) {
- echo (ot_get_option( 'back1' ));
-}
 
-?>
+get_header(); ?>
+
 		<div id="primary">
 			<div id="content" role="main">
 
@@ -27,10 +23,14 @@ if ( function_exists( 'ot_get_option' ) ) {
 					<?php get_template_part( 'content', 'page' ); ?>
 
 					<?php comments_template( '', true ); ?>
-
+					<?php $pos = $post->ID + 1; ?>
+<?php echo $pos ?>
+<?php echo 'hiddddddddddd'; ?>
 				<?php endwhile; // end of the loop. ?>
 
 			</div><!-- #content -->
 		</div><!-- #primary -->
+		
+		
 
 <?php get_footer(); ?>

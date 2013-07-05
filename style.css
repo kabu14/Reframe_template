@@ -54,9 +54,50 @@ a {
 }
 
 /*Branding end*/
-
 .singular.page .hentry {	
 	padding: 0;
 }
 
+/*Gallery - Image styles*/
+/*This is so that the span images will show*/
+div.image-attachment #nav-single {
+	overflow: visible;
+}
 
+/*The parent span containing the nav and popup image*/
+#nav-single > span {
+	position: relative;
+	z-index: 1;
+}
+
+#nav-single > span:hover {
+	background-color: transparent;
+	z-index: 50;
+}
+
+span.large-image {
+	position: absolute;
+	background-color: lightyellow;
+	padding: 5px;
+	left: -9999px;
+	border: 1px dashed gray;
+	color: black;
+	text-decoration: none;
+	visibility: hidden;
+}
+
+.large-img {
+	border-width: 0;
+	padding: 2px;
+}
+
+#nav-single > span:hover span.large-image {
+	visibility: visible;
+	top: 10px;
+	left: 62px;
+}
+
+#nav-single > span:hover:nth-child(2) span.large-image {
+	top: 10px;
+	left: -175px;
+}
