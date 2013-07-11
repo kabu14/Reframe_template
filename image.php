@@ -18,7 +18,8 @@ get_header(); ?>
                      * Grab the IDs of all the image attachments in a gallery so we can get the URL of the next adjacent image in a gallery,
                      * or the first image (if we're looking at the last image in a gallery), or, in a gallery of one, just the link to that image file
                      */
-                    $attachments = array_values( get_children( array( 'post_parent' => $post->post_parent, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID' ) ) );
+                    $image_attachments = get_children( array( 'post_parent' => $post->post_parent, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID' ) ); // Used to gather all images as thumbnails.
+                    $attachments = array_values($image_attachments);    // Used to look for the next image
                     foreach ( $attachments as $k => $attachment ) {
                         if ( $attachment->ID == $post->ID )
                             break;
@@ -29,8 +30,14 @@ get_header(); ?>
                         if ( isset( $attachments[ $k ] )) {
                             // get the URL of the next image attachment
                             $next_attach_id = $attachments[ $k ]->ID;   // ID for the next attachment
-                            $k = $k - 2;                                // Set the ID for the previous attachment ID
-                            $previous_attach_id = $attachments[ $k ]->ID;
+                            // ID for the previous attachments. But we want to check that $k will be positive int. k is already being added by 1 above.
+                            if ( $k > 1) {
+                                 $previous_attach_id = $attachments[ ($k - 2) ]->ID;
+                            }
+                            else {
+                                $previous_attach_id = null;
+                            }
+                            
                             $next_attachment_url = get_attachment_link( $attachments[ $k ]->ID );
                         }
                         else{
@@ -124,6 +131,14 @@ get_header(); ?>
                                 <?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
                             </div><!-- .entry-description -->
 
+                            <div class="gallery-thumb">
+                                <?php
+                                
+                                foreach ( $image_attachments as $d => $attachment ) {
+                                    echo "<a href=" . get_attachment_link( $d ) . ">" . wp_get_attachment_image( $d, 'thumbnail', $icon = false, $attr = '' ) . '</a>';
+                                }
+                                ?>
+                            </div><!-- .gallery-thumb -->
                         </div><!-- .entry-content -->
 
                     </article><!-- #post-<?php the_ID(); ?> -->

@@ -77,7 +77,7 @@ function reframe_home_options_validate($values) {
 	
 	if ( $submit ) {
 		$valid_input['logo'] = strip_tags( stripslashes($values['logo']));
-		$valid_input['def_header'] = strip_tags( stripslashes($values['def_header']));
+
 		$valid_input['home'] = strip_tags( stripslashes($values['home']));
 		$valid_input['radio_menu'] = $values['radio_menu'];
 		$valid_input['color']  = sanitize_text_field($values['color']);
@@ -88,7 +88,6 @@ function reframe_home_options_validate($values) {
 		//delete_image( $reframe_home['def_header'] );
 		//delete_image( $reframe_home['home'] );
 		$valid_input['logo'] = $default_options['logo'];
-		$valid_input['def_header'] = $default_options['def_header'];
 		$valid_input['home'] = $default_options['logo'];
 		$valid_input['radio_menu'] = $default_options['radio_menu'];
 		$valid_input['color'] = $default_options['color'];
@@ -97,7 +96,6 @@ function reframe_home_options_validate($values) {
 	elseif ( $delete_logo ) {
 		//delete_image( $reframe_home['logo'] );
 		$valid_input['logo'] = '';
-		$valid_input['def_header'] = strip_tags( stripslashes($values['def_header']));
 		$valid_input['home'] = strip_tags( stripslashes($values['home']));
 		$valid_input['radio_menu'] = $values['radio_menu'];
 		$valid_input['color']  = sanitize_text_field($values['color']);
@@ -107,7 +105,6 @@ function reframe_home_options_validate($values) {
 		//delete_image( $reframe_home['home'] );
 		$valid_input['home'] = '';
 		$valid_input['logo'] = strip_tags( stripslashes($values['logo']));
-		$valid_input['def_header'] = strip_tags( stripslashes($values['def_header']));
 		$valid_input['radio_menu'] = $values['radio_menu'];
 		$valid_input['color']  = sanitize_text_field($values['color']);
 		$valid_input['search'] = strip_tags( stripslashes($values['search']));
@@ -245,6 +242,7 @@ function wp_enqueue_color_picker( ) {
     wp_enqueue_script( 'wp-color-picker-script', get_stylesheet_directory_uri() . '/js/script.js', array( 'wp-color-picker' ), false, true );
 }
 
+/* Favicon can be added here. Code needs to be changed. Look at nettuts 
 function reframe_home_add_def_header() {
 	$reframe_home = get_option( 'reframe_home' );
 	$reframe_home_def_header = $reframe_home['def_header'];
@@ -253,4 +251,5 @@ function reframe_home_add_def_header() {
 <?php
 }
 add_action( 'wp_head', 'reframe_home_add_def_header' );
+*/
 ?>

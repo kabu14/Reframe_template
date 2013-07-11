@@ -85,7 +85,6 @@ function reframe_options_validate($values) {
 	if ( $submit ) {
 		$valid_input['logo'] = strip_tags( stripslashes($values['logo']));
 		$valid_input['def_header'] = strip_tags( stripslashes($values['def_header']));
-		$valid_input['home'] = strip_tags( stripslashes($values['home']));
 		$valid_input['radio_menu'] = $values['radio_menu'];
 		$valid_input['color']  = sanitize_text_field($values['color']);
 		$valid_input['search'] = strip_tags( stripslashes($values['search']));
@@ -96,7 +95,6 @@ function reframe_options_validate($values) {
 		//delete_image( $reframe_options['home'] );
 		$valid_input['logo'] = $default_options['logo'];
 		$valid_input['def_header'] = $default_options['def_header'];
-		$valid_input['home'] = $default_options['logo'];
 		$valid_input['radio_menu'] = $default_options['radio_menu'];
 		$valid_input['color'] = $default_options['color'];
 		$valid_input['search'] = $default_options['search'];
@@ -105,7 +103,6 @@ function reframe_options_validate($values) {
 		//delete_image( $reframe_options['logo'] );
 		$valid_input['logo'] = '';
 		$valid_input['def_header'] = strip_tags( stripslashes($values['def_header']));
-		$valid_input['home'] = strip_tags( stripslashes($values['home']));
 		$valid_input['radio_menu'] = $values['radio_menu'];
 		$valid_input['color']  = sanitize_text_field($values['color']);
 		$valid_input['search'] = strip_tags( stripslashes($values['search']));
@@ -114,7 +111,6 @@ function reframe_options_validate($values) {
 		//delete_image( $reframe_options['def_header'] );
 		$valid_input['def_header'] = '';
 		$valid_input['logo'] = strip_tags( stripslashes($values['logo']));
-		$valid_input['home'] = strip_tags( stripslashes($values['home']));
 		$valid_input['radio_menu'] = $values['radio_menu'];
 		$valid_input['color']  = sanitize_text_field($values['color']);
 		$valid_input['search'] = strip_tags( stripslashes($values['search']));
@@ -241,7 +237,7 @@ function reframe_print_scripts() {
 }
 
 
-
+/* Favicon can be added here. Code needs to be changed. Look at nettuts 
 function reframe_add_def_header() {
 	$reframe_options = get_option( 'reframe_options' );
 	$reframe_def_header = $reframe_options['def_header'];
@@ -250,4 +246,5 @@ function reframe_add_def_header() {
 <?php
 }
 add_action( 'wp_head', 'reframe_add_def_header' );
+*/
 ?>
