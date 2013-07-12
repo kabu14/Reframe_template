@@ -19,6 +19,7 @@ get_header(); ?>
                      * or the first image (if we're looking at the last image in a gallery), or, in a gallery of one, just the link to that image file
                      */
                     $image_attachments = get_children( array( 'post_parent' => $post->post_parent, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID' ) ); // Used to gather all images as thumbnails.
+                    var_dump($image_attachments);
                     $attachments = array_values($image_attachments);    // Used to look for the next image
                     foreach ( $attachments as $k => $attachment ) {
                         if ( $attachment->ID == $post->ID )
