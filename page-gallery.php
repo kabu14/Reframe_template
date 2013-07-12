@@ -12,11 +12,20 @@
  * @since Twenty Eleven 1.0
  */
 
-get_header(); ?>
+get_header('gallery'); ?>
+
 
 		<div id="primary">
 			<div id="content" role="main">
+<script type="text/javascript">
+  $(document).ready(function(){
+    
+$('.bxslider').bxSlider({
+  pagerCustom: '#bx-pager'
+});
+  });
 
+</script>
 				<?php while ( have_posts() ) : the_post(); ?>
 	<?php
 
@@ -37,21 +46,27 @@ get_header(); ?>
 	
 
 	<?php if($images){ ?>
-		<div id="image-wrapper">
+		<ul class="bxslider">
 			<?php foreach($images as $image){ ?>
-			<div class="main-img">
+			<li>
 				<img src="<?php echo $image->guid; ?>" alt="<?php echo $image->post_title; ?>" title="<?php echo $image->post_title; ?>" />
-			</div> <!-- .main-img -->
+			</li>
 			<?php } // End foreach ?>
-		</div><!-- $main-image -->
+		</ul><!-- $main-image -->
   		
-  		<div id="thumb-wrapper">
+  		<div id="bx-pager">
+  			<?php $index = 0;?>
   			<?php foreach($images as $key => $image) { ?> 
-				<div class="thumb">
-					<?php echo wp_get_attachment_image( $key, 'thumbnail', $icon = false, $attr = '' );
-					} ?>
-				</div>
-  		</div><!-- #thumb-wrapper -->
+					<a data-slide-index="<?php echo $index ?>" href="">
+						<?php echo wp_get_attachment_image( $key, 'thumbnail', $icon = false, $attr = '' ); ?>
+					
+					</a>
+					<?php $index++ ?>
+			<?php } ?>
+					
+					
+			
+  		</div><!-- #bx-pager -->
 
   	<?php } // End if ?>
 
@@ -61,5 +76,5 @@ get_header(); ?>
 
 			</div><!-- #content -->
 		</div><!-- #primary -->
-
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>
