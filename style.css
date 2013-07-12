@@ -17,6 +17,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 ul {
 	margin: 0;
 }
+
+/*singular pages*/
+.singular #primary {
+	width:725px;
+}
+
+/*sidebar*/
+$secondary {
+	margin-top: 50px;
+}
 /*Title*/
 .title {
 	display: inline-block;
