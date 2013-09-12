@@ -51,7 +51,7 @@
 <!-- jQuery library (served from Google) -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <!-- bxSlider Javascript file -->
-<script src="<?php echo get_stylesheet_directory_uri() ?> /js/jquery.bxslider.min.js"></script>
+<script src="<?php echo get_stylesheet_directory_uri() ?>/js/jquery.bxslider.min.js"></script>
 <!-- bxSlider CSS file -->
 <link href="<?php echo get_stylesheet_directory_uri() ?>/lib/jquery.bxslider.css" rel="stylesheet" />
 
