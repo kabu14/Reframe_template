@@ -24,8 +24,7 @@ get_header(); ?>
 
 					<?php comments_template( '', true ); ?>
 					<?php $pos = $post->ID + 1; ?>
-<?php echo $pos ?>
-<?php echo 'hiddddddddddd'; ?>
+
 				<?php endwhile; // end of the loop. ?>
 
 			</div><!-- #content -->

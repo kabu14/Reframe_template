@@ -5,14 +5,14 @@ Version: 1.0
 Description: Designed by <a href="http://www.reframemarketing.com/">Reframe Marketing</a>.
 Author: Reframe Marketing
 Author URI: http://www.reframemarketing.com
-Template: twentyeleven
+Template: twentythirteen
 Copyright: (c) 2010-2012 Reframe Marketing.
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 */
 
-@import url("../twentyeleven/style.css");
+@import url("../twentythirteen/style.css");
 
 ul {
 	margin: 0;
@@ -40,6 +40,10 @@ ul {
 
 
 /*Branding*/
+hgroup {
+	padding-left: 110px;	
+}
+
 #branding a img {
 	display: inline;
 }
@@ -53,6 +57,10 @@ a {
     clear: both;
     color: #1982D1;
     text-decoration: none;
+}
+
+#branding {
+	background: none;
 }
 
 #branding #searchform {
