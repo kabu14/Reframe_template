@@ -37,7 +37,10 @@
 				<?php //Initialize home and default options ?>
 				<?php $reframe_options = get_option('reframe_home'); ?>
 				<?php $default_options = get_option('reframe_options'); ?>
-				<?php $reframe_logo = $reframe_options['logo']; ?>
+				<?php 
+					$reframe_logo = $reframe_options['logo'];
+					$default_logo = $default_options['logo'];
+				?>
 				<?php //Assign the header image based on if it's front page and if the home image is assigned
 				if ( is_front_page() and $reframe_options['home'] != '') {
 					$reframe_header_image = $reframe_options['home'];
@@ -59,8 +62,15 @@
 				?>
 
 				<?php //Logo assignment ?>
-				<?php if ( $reframe_logo != '' ): ?>
-					<a href="/"><img class="logo" src="<?php echo $reframe_logo; ?>" /></a>
+				<?php if ( is_front_page() ) : ?>
+					<?php if ( !empty($reframe_logo) ) : ?>
+						<a href="/"><img class="logo" src="<?php echo $reframe_logo; ?>" /></a>
+					<?php else : ?>
+						<h1 id="site-title"><span><a <?php echo $reframe_branding_color; ?> href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
+						<h2 id="site-description" <?php echo $reframe_branding_color; ?> ><?php bloginfo( 'description' ); ?></h2>
+					<?php endif; ?>
+				<?php elseif ( !empty($default_logo) ) : ?>
+					<a href="/"><img class="logo" src="<?php echo $default_logo; ?>" /></a>
 				<?php else :?>
 					<h1 id="site-title"><span><a <?php echo $reframe_branding_color; ?> href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 					<h2 id="site-description" <?php echo $reframe_branding_color; ?> ><?php bloginfo( 'description' ); ?></h2>
@@ -70,34 +80,33 @@
 			<?php //Display the header image based on if the option is checked to be above the menu ?>
 			<?php $reframe_menu_position = $reframe_options['radio_menu']; ?>
 			<?php if ( $reframe_menu_position == 1 and $reframe_header_image != '' ) : ?>
-				<img class="header-img" src="<?php echo $reframe_header_image; ?>" />
+				<div class="banner"><img class="header-img" src="<?php echo $reframe_header_image; ?>" /></div>
 			<?php endif; ?>	
 <div id="navbar" class="navbar">
 				<nav id="site-navigation" class="navigation main-navigation" role="navigation">
 					<h3 class="menu-toggle"><?php _e( 'Menu', 'twentythirteen' ); ?></h3>
 					<a class="screen-reader-text skip-link" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentythirteen' ); ?>"><?php _e( 'Skip to content', 'twentythirteen' ); ?></a>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
-					<?php get_search_form(); ?>
+					<?php //show the search form only if it is selected in the options page ?>
+					<?php
+					if ( is_front_page() ) {
+						if ( $reframe_options['search'] ) {
+							get_search_form(); 
+						}
+					}
+					elseif ( !is_front_page() and $default_options['search'] ) {
+						get_search_form();
+					}
+					?>
 				</nav><!-- #site-navigation -->
 			</div><!-- #navbar -->
 			
 			<!--Display the header image based on if the option is checked to be below the menu. If no radio button is checked then default is below the navigation.-->
 			<?php if ( $reframe_menu_position != 1 and $reframe_header_image != '' ) : ?>
-				<img class="header-img" src="<?php echo $reframe_header_image; ?>" />
+				<div class="banner"><img class="header-img" src="<?php echo $reframe_header_image; ?>" /></div>
 			<?php endif; ?>
 
-			<!--Show the search bar in either the home or other pages only if the user selected the checkbox in the options page-->
-			<?php
-			if ( is_front_page() ) {
-				if ( $reframe_options['search'] ) {
-					get_search_form(); 
-				}
-			}
-			elseif ( !is_front_page() and $default_options['search'] ) {
-				get_search_form();
-			}
-				
-			?>
+
 			
 	</header><!-- #branding -->
 

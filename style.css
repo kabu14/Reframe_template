@@ -18,16 +18,19 @@ ul {
 	margin: 0;
 }
 
-/*singular pages*/
-.singular #primary {
-	width:725px;
+/* Class for clearing floats */
+.clear {
+clear:both;
 }
-
-/*sidebar*/
-#secondary {
-	margin-top: 50px;
-}
-/*Title*/
+/* =Basic Layouts
+-----------------------------------------------------------------------------*/
+/*Headings*/
+ 
+/*Links*/
+ 
+/* =Content Region
+-----------------------------------------------------------------------------*/
+/*header styles*/
 .title {
 	display: inline-block;
 	margin: 20px;
@@ -36,10 +39,22 @@ ul {
 
 #site-title {
 	margin-bottom: 20px;
+} 
+ 
+/*nav styles*/
+ 
+ 
+/*banner styles*/
+div.banner {
+	width: 1080px;
+	margin: 0 auto;
 }
 
+.header-img {
+	width: 1080px;
+	height: 180px;
+}
 
-/*Branding*/
 hgroup {
 	padding-left: 110px;	
 }
@@ -51,6 +66,7 @@ hgroup {
 #branding .logo {
 	margin: 35px 0 15px 0;
 	display: inline;
+	width: 150px;
 }
 
 a {
@@ -78,48 +94,28 @@ a {
 /*Branding end*/
 .singular.page .hentry {	
 	padding: 0;
+} 
+ 
+/*article styles*/
+.singular #primary {
+	width:725px;
 }
-
-/*Gallery - Image styles*/
-/*This is so that the span images will show*/
-div.image-attachment #nav-single {
-	overflow: visible;
-}
-
-/*The parent span containing the nav and popup image*/
-#nav-single > span {
-	position: relative;
-	z-index: 1;
-}
-
-#nav-single > span:hover {
-	background-color: transparent;
-	z-index: 50;
-}
-
-span.large-image {
-	position: absolute;
-	background-color: lightyellow;
-	padding: 5px;
-	left: -9999px;
-	border: 1px dashed gray;
-	color: black;
-	text-decoration: none;
-	visibility: hidden;
-}
-
-.large-img {
-	border-width: 0;
-	padding: 2px;
-}
-
-#nav-single > span:hover span.large-image {
-	visibility: visible;
-	top: 10px;
-	left: 62px;
-}
-
-#nav-single > span:hover:nth-child(2) span.large-image {
-	top: 10px;
-	left: -175px;
-}
+ 
+/* =Page Specific Content
+-----------------------------------------------------------------------------*/
+ 
+ 
+/* =Contact
+-----------------------------------------------------------------------------*/
+ 
+/* =Forms
+-----------------------------------------------------------------------------*/
+ 
+/* =Aside
+-----------------------------------------------------------------------------*/
+/*main-sidebar*/
+#secondary {
+	margin-top: 50px;
+} 
+/* =Footer
+-----------------------------------------------------------------------------*/

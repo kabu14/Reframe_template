@@ -105,7 +105,7 @@ function reframe_options_validate($values) {
 		$valid_input['def_header'] = strip_tags( stripslashes($values['def_header']));
 		$valid_input['radio_menu'] = $values['radio_menu'];
 		$valid_input['color']  = sanitize_text_field($values['color']);
-		$valid_input['search'] = strip_tags( stripslashes($values['search']));
+		$valid_input['search'] = isset($values['search']) ? strip_tags( stripslashes($values['search'])) : false;
 	}
 	elseif ( $delete_def_head ) {
 		//delete_image( $reframe_options['def_header'] );
@@ -113,7 +113,7 @@ function reframe_options_validate($values) {
 		$valid_input['logo'] = strip_tags( stripslashes($values['logo']));
 		$valid_input['radio_menu'] = $values['radio_menu'];
 		$valid_input['color']  = sanitize_text_field($values['color']);
-		$valid_input['search'] = strip_tags( stripslashes($values['search']));
+		$valid_input['search'] = isset($values['search']) ? strip_tags( stripslashes($values['search'])) : false;
 	}
 	else {
 		
