@@ -81,7 +81,7 @@ function reframe_home_options_validate($values) {
 		$valid_input['home'] = strip_tags( stripslashes($values['home']));
 		$valid_input['radio_menu'] = $values['radio_menu'];
 		$valid_input['color']  = sanitize_text_field($values['color']);
-		$valid_input['search'] = strip_tags( stripslashes($values['search']));
+		$valid_input['search'] = isset($values['search']) ? strip_tags( stripslashes($values['search'])) : false;
 	}
 	elseif ( $reset ) {
 		//delete_image( $reframe_home['logo'] );
