@@ -97,21 +97,23 @@
 /* DIRECTION CONTROLS (NEXT / PREV) */
 
 .bx-wrapper .bx-prev {
-	left: 10px;
-	background: url(images/controls.png) no-repeat 0 -32px;
+	left: 0px;
+	background: url(images/gallerynav.png) no-repeat -90px 148px;
+	opacity: 0.5;
 }
 
 .bx-wrapper .bx-next {
-	right: 10px;
-	background: url(images/controls.png) no-repeat -43px -32px;
+	right: 0px;
+	background: url(images/gallerynav.png) no-repeat 118px 148px;
+	opacity: 0.5;
 }
 
 .bx-wrapper .bx-prev:hover {
-	background-position: 0 0;
+	opacity: 1;
 }
 
 .bx-wrapper .bx-next:hover {
-	background-position: -43px 0;
+	opacity: 1;
 }
 
 .bx-wrapper .bx-controls-direction a {
@@ -120,7 +122,7 @@
 	margin-top: 4px;
 	outline: 0;
 	width: 230px;
-	height: 475px;
+	height: 403px;
 	text-indent: -9999px;
 	z-index: 9999;
 }

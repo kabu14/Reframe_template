@@ -24,9 +24,30 @@ clear:both;
 }
 /* =Basic Layouts
 -----------------------------------------------------------------------------*/
-/*Headings*/
- 
-/*Links*/
+.page-logo, #site-generator {
+	width: 1080px;
+	margin: 0 auto;
+}
+div#main {
+	overflow: hidden;
+	padding-top: 2em;
+	width: 1080px;
+	margin: 0 auto;
+}
+
+#primary {
+	width: 670px;
+	float: left;
+}
+
+#tertiary {
+	float: right;
+	width: 290px;
+}
+
+footer {
+	clear: both;
+}
  
 /* =Content Region
 -----------------------------------------------------------------------------*/
@@ -53,10 +74,6 @@ div.banner {
 .header-img {
 	width: 1080px;
 	height: 180px;
-}
-
-hgroup {
-	padding-left: 110px;	
 }
 
 #branding a img {
@@ -99,6 +116,61 @@ a {
 /*article styles*/
 .singular #primary {
 	width:725px;
+}
+
+/*gallery styles*/
+#bx-contain {
+    clear: left;
+    margin: 0 auto;
+    width: 83%;
+}
+
+.wp-caption {
+    float: left;
+    margin-right: 15px;
+    position: relative;
+    background: white;
+    padding: 2px;
+}
+
+div.wp-caption .wp-caption-text {
+    position: absolute;
+    background-color: #693;
+    bottom: -1px;
+    left: 4px;
+    color: white;
+    padding: 4px 8px;
+    width: 234px;
+    font: 12px/18px Arial,Helvetica,sans-serif;
+}
+
+.wp-caption .wp-caption-text:before {
+    content: none;
+}
+
+.wp-caption a {
+    z-index: 99;
+}
+
+div.wp-caption img {
+    padding: 3px;
+    height: 170px;
+
+}
+
+.bxslider p {
+    padding: 5px;
+    color: #666666;
+    font: 12px/18px Arial, Helvetica, sans-serif;
+}
+
+.wp-caption + p {
+    clear: both;
+}
+
+#bx-pager img {
+    margin-right: 12px;
+    margin-bottom: 12px;
 }
  
 /* =Page Specific Content
