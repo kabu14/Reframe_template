@@ -21,7 +21,10 @@ get_header('gallery'); ?>
   $(document).ready(function(){
     
 $('.bxslider').bxSlider({
-  pagerCustom: '#bx-pager'
+  pagerCustom: '#bx-pager',
+  adaptiveHeight: true,
+  mode: 'fade',
+  responsive: true
 });
   });
 
@@ -32,7 +35,7 @@ $('.bxslider').bxSlider({
 	$args = array(
 		'numberposts' => -1, // Using -1 loads all posts
 		'orderby' => 'menu_order', // This ensures images are in the order set in the page media manager
-		'order'=> 'ASC',
+		'order'=> 'DSC',
 		'post_mime_type' => 'image', // Make sure it doesn't pull other resources, like videos
 		'post_parent' => $post->ID, // Important part - ensures the associated images are loaded
 		'post_status' => null,
@@ -44,13 +47,15 @@ $('.bxslider').bxSlider({
 
 	<?php get_template_part( 'content', 'page' ); ?>
 	
-
+	<div id="bx-contain">
 	<?php if($images){ ?>
 		<ul class="bxslider">
 			<?php foreach($images as $image){ ?>
 			<li>
 				<img src="<?php echo $image->guid; ?>" alt="<?php echo $image->post_title; ?>" title="<?php echo $image->post_title; ?>" />
+				<p><?php echo $image->post_content; ?></p>
 			</li>
+
 			<?php } // End foreach ?>
 		</ul><!-- $main-image -->
   		
@@ -67,7 +72,7 @@ $('.bxslider').bxSlider({
 					
 			
   		</div><!-- #bx-pager -->
-
+  	</div><!-- #bx-contain -->
   	<?php } // End if ?>
 
 

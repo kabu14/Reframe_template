@@ -2,7 +2,7 @@
 Theme Name: Reframe Template
 Theme URI: http://www.reframemarketing.com/
 Version: 1.0
-Description: Designed by <a href="http://www.reframemarketing.com/">Reframe Marketing</a>.
+Description: This Reframe template has a horizontal style that resembles the 2013 theme. 
 Author: Reframe Marketing
 Author URI: http://www.reframemarketing.com
 Template: twentythirteen
@@ -16,6 +16,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 ul {
 	margin: 0;
+	padding: 0;
 }
 
 /* Class for clearing floats */
@@ -28,6 +29,7 @@ clear:both;
 	width: 1080px;
 	margin: 0 auto;
 }
+
 div#main {
 	overflow: hidden;
 	padding-top: 2em;
@@ -36,8 +38,17 @@ div#main {
 }
 
 #primary {
-	width: 670px;
+	width: 760px;
 	float: left;
+}
+
+#primary div.entry-content, #primary .entry-header, #primary .entry-meta {
+	max-width: none;
+	padding: 0;
+}
+
+div#content, div#site-generator {
+	padding-left: 15px;
 }
 
 #tertiary {
@@ -133,6 +144,10 @@ a {
     padding: 2px;
 }
 
+/*For the paragraph height to extend*/
+.bxslider li {
+	box-sizing: content-box;
+}
 div.wp-caption .wp-caption-text {
     position: absolute;
     background-color: #693;
@@ -162,6 +177,8 @@ div.wp-caption img {
     padding: 5px;
     color: #666666;
     font: 12px/18px Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 5px;
 }
 
 .wp-caption + p {

@@ -9,7 +9,7 @@
  //Removes the last directory from the URL
  //$URL = rtrim($_SERVER['Request_URI'], ' /');
  //find the string that stripped away 
-get_header('redirect.php'); ?>
+?>
 <?php
 // redirect the user up one level in the tree
 $URI = rtrim($_SERVER['REQUEST_URI'], ' /');
@@ -20,7 +20,7 @@ if ( ! in_array($URI, array('', '/'))) {
 	header('Location: '.$URI);
 }
 ?>
-
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>
 
 
