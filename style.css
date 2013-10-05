@@ -1,8 +1,8 @@
 /*  
 Theme Name: Reframe Template
 Theme URI: http://www.reframemarketing.com/
-Version: 1.0
-Description: This Reframe template horizontal style, 2013. Final
+Version: 2.0
+Description: This Reframe template based on 2011 but with 2013 menu
 Author: Reframe Marketing
 Author URI: http://www.reframemarketing.com
 Template: twentythirteen
@@ -13,6 +13,33 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 @import url("../twentythirteen/style.css");
+/* =General Styles
+-----------------------------------------------------------------------------*/
+body, #background {
+	background: #E2E2E2;
+}
+
+body, input, textarea {
+    color: #373737;
+    font: 300 15px/1.625 "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font: 300 15px/1.625 "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+a {
+	color: #1982D1;
+}
+
+a:hover {
+	color: #1982D1;
+	text-decoration: underline;
+}
+
+#page {
+	background: #FFF;
+}
 
 ul {
 	margin: 0;
@@ -25,16 +52,15 @@ clear:both;
 }
 /* =Basic Layouts
 -----------------------------------------------------------------------------*/
-.page-logo, #site-generator {
-	width: 1080px;
-	margin: 0 auto;
+#page {
+	max-width: 1080px;
+	margin: 2em auto;
 }
+
 
 div#main {
 	overflow: hidden;
 	padding-top: 2em;
-	width: 1080px;
-	margin: 0 auto;
 }
 
 #primary {
@@ -48,7 +74,7 @@ div#main {
 }
 
 div#content, div#site-generator {
-	padding-left: 15px;
+	padding-left: 5em;
 }
 
 #tertiary {
@@ -69,22 +95,81 @@ footer {
 	color: #333333;	
 }
 
-#site-title {
-	margin-bottom: 20px;
-} 
+
+
+.entry-title {
+	font-size: 26px;
+}
+
+.entry-title a:hover {
+	color: #1982D1;
+	text-decoration: underline;
+}
  
 /*nav styles*/
- 
+ #navbar {
+ 	padding-left: 4em;
+ 	background: linear-gradient(#252525, #0A0A0A) repeat scroll 0 0 rgba(0, 0, 0, 0);
+ }
+
+ #navbar a {
+ 	color: #EEE;
+ }
+
+ #navbar a:hover {
+ 	background: linear-gradient(#F9F9F9, #E5E5E5) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #373737;
+ }
+
+ #navbar .current_page_item > a {
+ 	font-weight: bold;
+ }
+
+ #navbar ul.children a {
+ 	background: none repeat scroll 0 0 #F9F9F9;
+ 	color: #444444;
+ }
+
+ #navbar ul.children a:hover {
+ 	background: #EFEFEF;
+ }
  
 /*banner styles*/
-div.banner {
-	width: 1080px;
-	margin: 0 auto;
+#site-title {
+	margin: 0;
+}
+
+#site-description {
+	color: #7A7A7A;
+    font-size: 14px;
+    margin: 0;
+}
+
+#hblock {
+	margin: 3em 0;
+}
+
+#site-title a {
+	color: #111111;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 36px;
+    text-decoration: none;
+}
+
+#site-title a:hover {
+	color: #1982D1 !important;
 }
 
 .header-img {
-	width: 1080px;
+	width: 100%;
 	height: 180px;
+	display: block;
+}
+
+#branding .page-logo {
+	padding-left: 5em;
+	padding-top: 1em;
 }
 
 #branding a img {
@@ -92,16 +177,12 @@ div.banner {
 }
 
 #branding .logo {
-	margin: 35px 0 15px 0;
+	margin: 0;
 	display: inline;
 	width: 150px;
 }
 
-a {
-    clear: both;
-    color: #1982D1;
-    text-decoration: none;
-}
+
 
 #branding {
 	background: none;
@@ -127,6 +208,18 @@ a {
 /*article styles*/
 .singular #primary {
 	width:725px;
+}
+
+.entry-meta a {
+	color: #1982D1;
+}
+
+.entry-meta a:hover {
+	color: #1982D1;
+}
+
+.hentry {
+	padding-top: 0;
 }
 
 /*gallery styles*/
@@ -199,12 +292,42 @@ div.wp-caption img {
  
 /* =Forms
 -----------------------------------------------------------------------------*/
- 
+.site-header .search-field {
+	background-image: url("img/search-icon.png");
+} 
 /* =Aside
 -----------------------------------------------------------------------------*/
 /*main-sidebar*/
 #secondary {
 	margin-top: 50px;
 } 
+
+.widget {
+	background-color: white;
+}
+
+.widget a {
+	color: #1982D1;
+}
+
+.widget a:hover {
+	color: #1982D1;
+	text-decoration: underline;
+}
 /* =Footer
 -----------------------------------------------------------------------------*/
+
+#site-generator {
+    background: none repeat scroll 0 0 #F9F9F9;
+    border-top: 1px solid #DDDDDD;
+    color: #666666;
+    font-size: 12px;
+    line-height: 2.2em;
+    padding: 2.2em 0.5em;
+    text-align: center;
+}
+
+#site-generator a {
+	color: #555555;
+	font-weight: bold;
+}
